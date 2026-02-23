@@ -15,7 +15,7 @@ import joblib
 import json
 import os
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'DVA_Capstone-G3_Section_C.xlsx')
+DATA_PATH = os.path.join(os.path.dirname(__file__), 'data', 'DVA_Capstone-G3_Section_C.xlsx')
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'best_model.joblib')
 METRICS_PATH = os.path.join(os.path.dirname(__file__), 'metrics.json')
 
