@@ -14,7 +14,7 @@ export default function InsightsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/data-insights")
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/data-insights`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data.data);
@@ -68,7 +68,7 @@ export default function InsightsPage() {
                                 <Tooltip
                                     cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                                     contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', borderRadius: '8px' }}
-                                    formatter={(val: number) => [`${val.toFixed(1)}%`, 'Churn Rate']}
+                                    formatter={(val: any) => [`${Number(val).toFixed(1)}%`, 'Churn Rate']}
                                 />
                                 <Bar dataKey="rate" fill="#ec4899" radius={[4, 4, 0, 0]}>
                                     {genderData.map((entry, index) => (

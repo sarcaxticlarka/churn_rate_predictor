@@ -73,7 +73,7 @@ export default function PredictPage() {
         };
 
         try {
-            const res = await fetch("http://localhost:8000/api/predict", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/predict`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(apiData)
@@ -244,8 +244,8 @@ export default function PredictPage() {
                         {result && !loading && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                                 <div className={`rounded-xl p-6 text-center ${result.prediction === 1
-                                        ? "bg-red-500/10 border border-red-500/30"
-                                        : "bg-emerald-500/10 border border-emerald-500/30"
+                                    ? "bg-red-500/10 border border-red-500/30"
+                                    : "bg-emerald-500/10 border border-emerald-500/30"
                                     }`}>
                                     <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${result.prediction === 1 ? "bg-red-500/20" : "bg-emerald-500/20"
                                         }`}>

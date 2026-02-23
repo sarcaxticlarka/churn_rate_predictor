@@ -12,7 +12,7 @@ export default function MetricsPage() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/metrics")
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/metrics`)
             .then((res) => {
                 if (!res.ok) throw new Error("Failed to fetch data");
                 return res.json();
@@ -155,7 +155,7 @@ export default function MetricsPage() {
                                 <XAxis type="number" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
                                 <YAxis dataKey="name" type="category" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} width={120} />
                                 <Tooltip
-                                    formatter={(value: number) => value.toFixed(4)}
+                                    formatter={(value: any) => typeof value === 'number' ? value.toFixed(4) : value}
                                     contentStyle={{ backgroundColor: 'rgba(30, 41, 59, 0.9)', borderColor: 'rgba(16, 185, 129, 0.3)', borderRadius: '8px' }}
                                 />
                                 <Bar dataKey="importance" fill="#10b981" radius={[0, 4, 4, 0]} barSize={20} />
