@@ -95,7 +95,7 @@ def predict(request: PredictRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/data-insights")
+@app.get("/api/dataset-info")
 def data_insights():
     try:
         insights = get_data_insights()
@@ -116,7 +116,7 @@ def data_insights():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/metrics")
+@app.get("/api/model-stats")
 def get_metrics():
     try:
         if not os.path.exists(METRICS_PATH):

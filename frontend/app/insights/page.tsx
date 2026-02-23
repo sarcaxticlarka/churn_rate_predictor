@@ -14,7 +14,7 @@ export default function InsightsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/data-insights`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/dataset-info`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data.data);

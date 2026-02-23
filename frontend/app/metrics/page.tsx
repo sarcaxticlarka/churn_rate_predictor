@@ -12,7 +12,7 @@ export default function MetricsPage() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/metrics`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/model-stats`)
             .then((res) => {
                 if (!res.ok) throw new Error("Failed to fetch data");
                 return res.json();

@@ -50,8 +50,8 @@ export default function DashboardClient() {
 
     useEffect(() => {
         Promise.all([
-            fetch("http://localhost:8000/api/data-insights").then(res => res.json()),
-            fetch("http://localhost:8000/api/metrics").then(res => res.json())
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/dataset-info`).then(res => res.json()),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/model-stats`).then(res => res.json())
         ])
             .then(([insightsRes, metricsRes]) => {
                 setData(insightsRes.data);
